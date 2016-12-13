@@ -1,3 +1,3 @@
 # hangman-game
-Hier is de hangman game<br/>
-Download python om het te runnen
+A hangman game made with Python<br/>
+Download Python to run main.py
