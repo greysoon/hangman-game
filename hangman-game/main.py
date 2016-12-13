@@ -19,11 +19,11 @@ usedLetters = []
 while True:
 	cls()
 	#select random int to select query from array
-	questionNum = randint(0,len(queries))
+	questionNum = randint(0,len(queries)-1)
 	#get character count from selected query
 	for i in range(len(queries[questionNum])):
 		#add underscores in ammount of characters
-		underScores += " _ "
+		underScores += "_ "
 	#check if you have enough chance to go further
 	while chances>0:
 		#display the ammount of chances left
@@ -31,7 +31,7 @@ while True:
 		#display the used letters
 		print('Used letters: '+', '.join(usedLetters))
 		#display the ammount of points 
-		print(str(points)+" Points " + queries[questionNum])
+		print(str(points)+" Points ")
 		#store the user input in a variable
 		user_input = input(underScores+"\n")
 		#check if user input is not longer than 1 character
@@ -49,10 +49,10 @@ while True:
 					for position in positions:
 						underScores = underScores[:position] + user_input + underScores[position + 1:]
 						#underScores = underScores.replace(underScores[position], user_input)
-
-					print("Thats right found in " + str(positions))
-					#right answer
-					right+=1
+						right+=1
+					
+					print("Thats right right:" + str(right))
+					
 					#add this letter to used
 					usedLetters.append(user_input)
 					#check if whole query is guessed
@@ -82,7 +82,8 @@ while True:
 			#reset user input
 			user_input = ""
 			continue
-	if chances <= 0:
+
+	if chances == 0:
 		#lost no point is rewarded
 		print("""\
 
@@ -96,7 +97,7 @@ while True:
 
 
                     """)
-		print("press any key to continue...")
+		break
 	else:
 		#you've won a point is rewarded
 		points+=1
