@@ -23,7 +23,7 @@ while True:
 	#get character count from selected query
 	for i in range(len(queries[questionNum])):
 		#add underscores in ammount of characters
-		underScores += "_ "
+		underScores += "_"
 	#check if you have enough chance to go further
 	while chances>0:
 		#display the ammount of chances left
@@ -77,11 +77,17 @@ while True:
 					chances-=1
 					continue
 		else:
-			#input is to long
-			print("Enter only one character")
-			#reset user input
-			user_input = ""
-			continue
+			#input is longer than 1
+
+			#check if input is the correct query
+			if user_input == queries[questionNum]:
+				right = 0
+				del usedLetters[:]
+				underScores = ""
+				break
+			else:
+				chances = 0
+				break
 
 	if chances == 0:
 		#lost no point is rewarded
@@ -94,8 +100,6 @@ while True:
                                            |        / \
                                            |
                                            |
-
-
                     """)
 		break
 	else:
